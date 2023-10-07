@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:shopy/screen/home/main_screen.dart';
-import 'package:shopy/screen/register_screen.dart';
-import 'package:shopy/screen/success_password_screen.dart';
 import 'package:shopy/theme.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class NewPasswordScreen extends StatelessWidget {
+  const NewPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +30,7 @@ class LoginScreen extends StatelessWidget {
                   width: 15,
                 ),
                 Text(
-                  'Sign In',
+                  'New Password',
                   style: SignInTextStyle.copyWith(
                     color: greyColor,
                     fontSize: 26.0,
@@ -46,7 +43,7 @@ class LoginScreen extends StatelessWidget {
               height: 16,
             ),
             Text(
-              'Please fill E-mail & password to login your \nShopy application account.',
+              'Your new password must be different\nfrom previously used passwords.',
               style: SignInTextStyle.copyWith(
                 fontSize: 13,
                 fontWeight: regular
@@ -57,7 +54,7 @@ class LoginScreen extends StatelessWidget {
       );
     }
 
-    Widget email(){
+    Widget newPassword(){
       return Container(
         margin: EdgeInsets.only(
           top: 47,
@@ -66,58 +63,7 @@ class LoginScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Email',
-              style: SignInTextStyle.copyWith(
-                fontSize: 14,
-                fontWeight: bold
-              ),
-            ),
-            SizedBox(
-              height: 12,
-            ),
-            Container(
-              height: 60,
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(
-                horizontal: 17,
-              ),
-              decoration: BoxDecoration(
-                color: whiteColor2,
-                borderRadius: BorderRadius.circular(14)
-              ),
-
-              child: Center(
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextFormField(
-                        style: SignInTextStyle,
-                        decoration: InputDecoration.collapsed(
-                          hintText: 'Youtube@gmail.com',
-                          hintStyle: placeholderTextStyle
-                        ),
-                      )
-                    )
-                  ],
-                ),
-              )
-            )
-          ],
-        ),
-      );
-    }
-
-
-    Widget password(){
-      return Container(
-        margin: EdgeInsets.only(
-          top: 20,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Password',
+              'New Password',
               style: SignInTextStyle.copyWith(
                 fontSize: 14,
                 fontWeight: bold
@@ -145,7 +91,7 @@ class LoginScreen extends StatelessWidget {
                         obscureText: true,
                         style: SignInTextStyle,
                         decoration: InputDecoration.collapsed(
-                          hintText: 'Your password',
+                          hintText: 'New Password',
                           hintStyle: placeholderTextStyle
                         ),
                       )
@@ -159,39 +105,65 @@ class LoginScreen extends StatelessWidget {
       );
     }
 
-    Widget forgetPassword()
-    {
-      return GestureDetector(
-        onTap: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => const SuccessPasswordScreen()));
-        },
-        child: Container(
-          margin: EdgeInsets.only(
-            top: 10,
-      
-          ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text(
-                'Forget Password?',
-                style: SignInTextStyle.copyWith(
-                  fontSize: 14,
-                  fontWeight: bold
+
+    Widget passwordConfirmation(){
+      return Container(
+        margin: EdgeInsets.only(
+          top: 20,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Password Confirmation',
+              style: SignInTextStyle.copyWith(
+                fontSize: 14,
+                fontWeight: bold
+              ),
+            ),
+            SizedBox(
+              height: 12,
+            ),
+            Container(
+              height: 60,
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(
+                horizontal: 17,
+              ),
+              decoration: BoxDecoration(
+                color: whiteColor2,
+                borderRadius: BorderRadius.circular(14)
+              ),
+
+              child: Center(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        obscureText: true,
+                        style: SignInTextStyle,
+                        decoration: InputDecoration.collapsed(
+                          hintText: 'Password Confirmation',
+                          hintStyle: placeholderTextStyle
+                        ),
+                      )
+                    )
+                  ],
                 ),
               )
-            ],
-          ),
+            )
+          ],
         ),
       );
     }
 
 
-    Widget signInBtn(){
+
+    Widget updateBtn(){
       return Container(
         margin: const EdgeInsets.only(
           top: 20,
+          bottom: 30,
        
         ),
         
@@ -207,11 +179,9 @@ class LoginScreen extends StatelessWidget {
             )
           ),
           
-          onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context) =>  MainScreen()));
-          }, 
+          onPressed: (){}, 
           child: Text(
-            'Sign In',
+            'Update',
             style: splashBtnSignInTextStyle.copyWith(
               fontSize: 16,
               fontWeight: FontWeight.w900
@@ -220,94 +190,6 @@ class LoginScreen extends StatelessWidget {
         ),
       );
     }
-
-    Widget textSignIn(){
-      return Container(
-        margin: EdgeInsets.only(
-          top: 20
-        ),
-        child: Row(
-          
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Divider(
-              color: Colors.black,
-              height: 20,
-              thickness: 0.5,
-              indent: 0,
-              endIndent: 0,
-              ),
-            Text(
-              'Or sign in with',
-              style: SignInTextStyle.copyWith(
-                fontSize: 14,
-                fontWeight: bold
-              ),
-            ),
-            Divider(
-              color: blueColor,
-              thickness: 5,
-            ),
-          ],
-        ),
-      );
-    }
-
-    Widget otherBtn(){
-      return Container(
-        margin: EdgeInsets.only(
-          top: 20
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            SvgPicture.asset(
-              'assets/Gmail.svg'
-            ),
-            SvgPicture.asset(
-              'assets/Fb.svg'
-            )
-          ],
-        ),
-      );
-    }
-
-    Widget footer(){
-      return Container(
-        margin: EdgeInsets.only(
-          bottom: 20,
-
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Don\'t have an account ?',
-              style: SignInTextStyle.copyWith(
-                fontSize: 12,
-
-              ),
-            ),
-            GestureDetector(
-              onTap: (){
-                 Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterScreen()));
-              },
-              child: Text(
-                'Sign Up',
-                style: SignInTextStyle.copyWith(
-                  fontSize: 12,
-                  fontWeight: medium
-                ),
-              ),
-            )
-          ],
-        ),
-      );
-    }
-
-
-
-
 
 
     return Scaffold(
@@ -320,14 +202,11 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             children: [
               appBar(),
-              email(),
-              password(),
-              forgetPassword(),
-              signInBtn(),
-              textSignIn(),
-              otherBtn(),
+              newPassword(),
+              passwordConfirmation(),
               Spacer(),
-              footer(),
+              updateBtn()
+              
             ],
           ),
         )

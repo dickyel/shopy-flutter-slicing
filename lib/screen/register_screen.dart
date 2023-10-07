@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopy/screen/login_screen.dart';
 import 'package:shopy/theme.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -217,7 +218,9 @@ class RegisterScreen extends StatelessWidget {
             )
           ),
           
-          onPressed: (){}, 
+          onPressed: (){
+             Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen()));
+          }, 
           child: Text(
             'Sign In',
             style: splashBtnSignInTextStyle.copyWith(
@@ -298,7 +301,7 @@ class RegisterScreen extends StatelessWidget {
             ),
             GestureDetector(
               onTap: (){
-                
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen()));
               },
               child: Text(
                 'Sign In',
@@ -312,11 +315,6 @@ class RegisterScreen extends StatelessWidget {
         ),
       );
     }
-
-
-
-
-
 
     return Scaffold(
       backgroundColor: whiteColor,
